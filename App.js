@@ -1,13 +1,8 @@
 import React from 'react'
-import {View, Text} from 'react-native'
+import Providers from './Navigation'
 
 function App() {
-  return (
-    <View>
-      <Text>Hi Hello....</Text>
-      <Text>Netflix</Text>
-    </View>
-  )
+  return <Providers />
 }
 
 export default App
