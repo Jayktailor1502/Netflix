@@ -1,11 +1,20 @@
-import React from 'react'
-import {View, Text} from 'react-native'
+import React ,{useContext} from 'react'
+import {View, Text, Button} from 'react-native'
+import { AuthContext } from '../Navigation/AuthProvider';
 
-function First() {
+function First({navigation}) {
+
+  const { logout } = useContext(AuthContext);
+
   return (
+    console.log('first'),
     <View>
       <Text>Hi Hello....</Text>
       <Text>Netflix 1</Text>
+    <Button 
+      title = "sign out"
+      onPress = {logout}
+      />
     </View>
   )
 }

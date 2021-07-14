@@ -1,41 +1,53 @@
-import React from 'react';
-import { createStackNavigator } from '@react-navigation/stack';
-
-import first1 from '../Screens/first1';
+import React, {useState, useEffect} from 'react';
+import {createStackNavigator} from '@react-navigation/stack';
+import OnBoardingScreen from '../Screens/OnBoardingScreen';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import LoginScreen from '../Screens/LoginScreen';
 
 const Stack = createStackNavigator();
-export default function AuthStack() {
+
+const AuthStack = () => {
+  const [isFirstLaunch, setIsFirstLaunch] = useState(null);
+  let routeName;
+
+  useEffect(() => {
+    AsyncStorage.getItem('alreadyLaunched').then((value) => {
+      if (value == null) {
+        AsyncStorage.setItem('alreadyLaunched', 'true'); // No need to wait for `setItem` to finish, although you might want to handle errors
+        setIsFirstLaunch(true);
+      } else {
+        setIsFirstLaunch(false);
+      }
+    }); 
+  
+    // GoogleSignin.configure({
+    //   webClientId: "488485713978-0nrkoghs0kbnce4li567r7mlu6ibpcci.apps.googleusercontent.com",
+    // });
+  
+  }, []);
+
+  if (isFirstLaunch === null) {
+    return null; 
+  } else if (isFirstLaunch == true) {
+    routeName = 'Onboarding';
+  } else {
+    routeName = 'LoginScreen';
+  }
+
   return (
-    <Stack.Navigator>
+    <Stack.Navigator initialRouteName={routeName}>
       <Stack.Screen
-        name="First"
-        component={first1}
-        options={{ headerShown: false }}
+        name="Onboarding"
+        component={OnBoardingScreen}
+        options={{header: () => null}}
       />
-      {/* <Stack.Screen
-        name="Doctor-Consultation"
+      <Stack.Screen
+        name="LoginScreen"
         component={LoginScreen}
-        options={{r
-          // headerTitleAlign: 'center',
-          // headerTitleStyle: {
-          //   color: '#123',
-          //   fontFamily: 'Kufam-SemiBoldItalic',
-          //   fontSize: 20,
-          //   fontStyle: 'italic',
-          // },
-          // headerStyle: {
-          //   shadowColor: '#123',
-          //   elevation: 0,
-          // },
-          // headerLeft: null,
-          headerShown: false
-        }}
-      /> */}
-      {/* <Stack.Screen
-        name="SignUp"
-        component={SignUp}
-        options={{ headerShown: true }}
-      /> */}
+        options={{header: () => null}}
+      />
     </Stack.Navigator>
   );
-}
+};
+
+export default AuthStack;

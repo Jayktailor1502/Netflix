@@ -1,5 +1,6 @@
 import React from 'react'
-import { createStackNavigator } from '@react-navigation/stack'
+import { createStackNavigator } from '@react-navigation/stack';
+import First from '../Screens/First'
 
 const Stack = createStackNavigator();
 
@@ -23,9 +24,9 @@ const AppStack = ({ navigation }) => {
                     },
                 }}
             /> */}
-             <Stack.Screen
+            <Stack.Screen
                 name="First"
-                component={Filter}
+                component={First}
                 options={{ headerShown: true }}
             />
         </Stack.Navigator>

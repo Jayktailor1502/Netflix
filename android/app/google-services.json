@@ -14,6 +14,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "488485713978-ktppg97j4nfqhr21ululehackcg4dnr2.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.netflix",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+          }
+        },
+        {
           "client_id": "488485713978-0nrkoghs0kbnce4li567r7mlu6ibpcci.apps.googleusercontent.com",
           "client_type": 3
         }

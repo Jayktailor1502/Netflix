@@ -20,6 +20,7 @@ const FormInput = ({ labelValue, placeholderText, iconType,secureTextEntry, ...r
         secureTextEntry={!secureTextEntry}
         {...rest}
       />
+      
     </View>
     </>
   );
@@ -33,7 +34,6 @@ const styles = StyleSheet.create({
     width: '100%',
     height: windowHeight / 15,
     borderColor: '#ccc',
-    borderRadius: 7,
     borderWidth: 1,
     flexDirection: 'row',
     alignItems: 'center',
@@ -64,7 +64,6 @@ const styles = StyleSheet.create({
     width: windowWidth / 1.5,
     height: windowHeight / 15,
     fontSize: 16,
-    borderRadius: 8,
     borderWidth: 1,
   },
 });
